@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Отзывы{% endblock%}
+{% block body %}
+<section id="comments">
+    <div class="container">
+        <h2>Отзывы<span class="label label-default" style="font-size: 90%; margin-left: 20px; ">{{ pagination.getTotalItemCount }}</span></h2>
+        <br/>
+        {{ form(form) }}
+        <br/>
+        {% for comment in pagination %}
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 style="color: black;">{{ comment.username }}:</h4>
+                    {% if comment.datecr %}
+                        <small>{{ comment.datecr|date('Y.m.d H:i') }}</small>
+                    {% endif %}
+                </div>
+                <div class="panel-body">
+                    <p>{{ comment.usermessage }}</p>
+                </div>
+                {% if comment.adminreply %}
+                    <div class="panel-footer">
+                        <h4>Соль Сити:</h4>
+                        <p>{{ comment.adminreply }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <nav>
+            {{ knp_pagination_render(pagination) }}
+        </nav>
+    </div>
+</section>
+{% endblock %}

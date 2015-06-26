@@ -2,11 +2,12 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: @AppBundle/Resources/config/admin.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: ru
 
 framework:
     #esi:             ~
@@ -35,6 +36,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources: ['bootstrap_3_layout.html.twig']
 
 # Assetic Configuration
 assetic:
@@ -78,6 +81,8 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    port: 2525
+    disable_delivery: false
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
     default_options:
@@ -98,3 +103,30 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+sonata_admin:
+    templates:
+        layout:                         admin/sonata_layout.html.twig
+    title:      Соль Master
+    title_logo: images/logo.png
+    assets:
+        stylesheets:
+            - bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css
+            - bundles/sonatacore/vendor/components-font-awesome/css/font-awesome.min.css
+            - bundles/sonatacore/vendor/ionicons/css/ionicons.min.css
+            - bundles/sonataadmin/vendor/admin-lte/dist/css/AdminLTE.min.css
+            - bundles/sonataadmin/vendor/admin-lte/dist/css/skins/skin-black.min.css
+            - bundles/sonataadmin/vendor/iCheck/skins/flat/blue.css
+            - bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css
+            - bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css
+            - bundles/sonatacore/vendor/select2/select2.css
+            - bundles/sonatacore/vendor/select2-bootstrap-css/select2-bootstrap.min.css
+            - bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css
+            - bundles/sonataadmin/css/styles.css
+            - bundles/sonataadmin/css/layout.css
+            - bundles/sonataadmin/css/tree.css
+            - css/sonata.css
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Array
+        tags:
+            - { name: twig.extension }

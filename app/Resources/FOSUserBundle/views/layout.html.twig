@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-xs-4 col-xs-offset-4 text-center">
+            {% block fos_user_content %}{% endblock %}
+        </div>
+    </div>
+    <script>
+        $( "input[type~='text'],input[type~='password']" ).addClass( "form-control" );
+        //$( "input[type~='checkbox']" ).next().andSelf().wrapAll( "<div class='checkbox'></div>" );
+        $( "input[type~='submit']" ).addClass( "btn btn-default" );
+    </script>
+{% endblock %}
