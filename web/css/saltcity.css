@@ -9,6 +9,9 @@ h6 {
 section {
     padding-top: 50px
 }
+#fos_section {
+    padding-top: 7%; padding-bottom: 5%;
+}
 .navbar {
     border-bottom: 10px solid #1d949a;
 }

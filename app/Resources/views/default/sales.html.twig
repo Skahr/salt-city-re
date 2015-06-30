@@ -10,7 +10,7 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="{{ asset('images/bckg/pic0_logo.jpg') }}">
+            <a href="{{ path('sales') }}"><img src="{{ asset('images/bckg/pic0_logo.jpg') }}"></a>
         </div>
         {% set array = [1, 2, 3, 4, 5, 6, 7, 8, 9]|shuffle %}
         {% for entity in entities %}
@@ -19,7 +19,13 @@
                 <div class="carousel-caption">
                     <h1>{{ entity.salestext }}</h1>
                     <p>
-                        <a href="{{ path('sales') }}">все события</a>
+                        <a href="{{ path('sales') }}">
+                            {% if entity.cat == 1 %}
+                                все акции
+                            {% elseif entity.cat == 0 %}
+                                все новости
+                            {% endif %}
+                        </a>
                     </p>
                 </div>
             </div>

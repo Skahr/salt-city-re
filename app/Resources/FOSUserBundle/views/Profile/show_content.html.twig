@@ -1,0 +1,29 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <table class="table">
+        <tr>
+            <td>{{ 'profile.show.username'|trans }}</td>
+            <td>{{ user.username }}</td>
+            <td>
+                <a href="{{ path('fos_user_profile_edit') }}">
+                    <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'profile.show.email'|trans }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <a href="{{ path('fos_user_profile_edit') }}">
+                    <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                </a>
+            </td>
+        </tr>
+        <tr><td colspan=3><a href="{{ path('fos_user_change_password') }}">сменить пароль</a></td></tr>
+    </table>
+    
+    <!--<p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <p><a href="{{ path('fos_user_change_password') }}">сменить пароль</a></p>-->
+</div>

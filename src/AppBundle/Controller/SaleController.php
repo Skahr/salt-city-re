@@ -42,7 +42,7 @@ class SaleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
-                'SELECT p.salestext
+                'SELECT p.salestext, p.cat
                 FROM AppBundle:Sale p
                 WHERE p.status = 1
                 ORDER BY p.datecr DESC'

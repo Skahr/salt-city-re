@@ -5,6 +5,9 @@
 <section>
     <div class="container">
         <h1>Все акции и новости</h1>
+        {% if app.request.headers.get('referer') %}
+            <p><a href="{{ app.request.headers.get('referer') }}">назад</a></p>
+        {% endif %}
         {% for sale in pagination %}
             {% if sale.cat %}
                 <div class="panel panel-danger">

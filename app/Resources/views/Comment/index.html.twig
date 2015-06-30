@@ -5,6 +5,9 @@
 <section id="comments">
     <div class="container">
         <h2>Отзывы<span class="label label-default" style="font-size: 90%; margin-left: 20px; ">{{ pagination.getTotalItemCount }}</span></h2>
+        {% if app.request.headers.get('referer') %}
+            <p><a href="{{ app.request.headers.get('referer') }}">назад</a></p>
+        {% endif %}
         <div class="comments_form">
         {{ form(form) }}
         </div>
@@ -27,7 +30,7 @@
                 {% endif %}
             </div>
         {% endfor %}
-        <nav>
+        <nav class="text-center">
             {{ knp_pagination_render(pagination) }}
         </nav>
     </div>
