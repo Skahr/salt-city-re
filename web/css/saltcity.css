@@ -46,7 +46,7 @@ footer a {
     padding-bottom: 10px;
 }
 .alert {
-    margin-top: 10px;
+    position: fixed; top: 60px; left: 0; right: 0; z-index: 1;
 }
 .well {margin-top: 20px}
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {

@@ -11,4 +11,5 @@ services:
         class: AppBundle\EventListener\SaltMailer
         tags:
             - { name: doctrine.event_listener, event: postPersist }
-        arguments: [@mailer, @templating]
+        calls:
+            - [ setContainer,[ @service_container ] ]

@@ -1665,12 +1665,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "d720519ed1483426e0a6267256e0f34de4718ed6"
+                "reference": "18a76b7bd6e2ff3fe0a4f497c08b648a1ab24bf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/d720519ed1483426e0a6267256e0f34de4718ed6",
-                "reference": "d720519ed1483426e0a6267256e0f34de4718ed6",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/18a76b7bd6e2ff3fe0a4f497c08b648a1ab24bf9",
+                "reference": "18a76b7bd6e2ff3fe0a4f497c08b648a1ab24bf9",
                 "shasum": ""
             },
             "require": {
@@ -1744,7 +1744,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2015-06-18 19:01:10"
+            "time": "2015-06-29 13:28:23"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -1752,12 +1752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "94d718f5f71d961fde8db6d7cf605e314388334f"
+                "reference": "8bb69e4b2e5f2b02a546c6497979fbb08595b5a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/94d718f5f71d961fde8db6d7cf605e314388334f",
-                "reference": "94d718f5f71d961fde8db6d7cf605e314388334f",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/8bb69e4b2e5f2b02a546c6497979fbb08595b5a5",
+                "reference": "8bb69e4b2e5f2b02a546c6497979fbb08595b5a5",
                 "shasum": ""
             },
             "require": {
@@ -1809,7 +1809,7 @@
                 "block",
                 "sonata"
             ],
-            "time": "2015-06-17 13:44:56"
+            "time": "2015-06-26 10:20:36"
         },
         {
             "name": "sonata-project/cache",
@@ -2013,31 +2013,33 @@
         },
         {
             "name": "sonata-project/exporter",
-            "version": "1.3.4",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/exporter.git",
-                "reference": "8a88328ccdd1ca1471dd14483a4396350fbda91c"
+                "reference": "92835b5aac7a5300b3c34f4b52ed4327a1d1ed47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/exporter/zipball/8a88328ccdd1ca1471dd14483a4396350fbda91c",
-                "reference": "8a88328ccdd1ca1471dd14483a4396350fbda91c",
+                "url": "https://api.github.com/repos/sonata-project/exporter/zipball/92835b5aac7a5300b3c34f4b52ed4327a1d1ed47",
+                "reference": "92835b5aac7a5300b3c34f4b52ed4327a1d1ed47",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
+                "fabpot/php-cs-fixer": "~0.1|~1.0",
                 "propel/propel1": "~1.6",
-                "symfony/property-access": "~2.2",
-                "symfony/routing": "*"
+                "symfony/phpunit-bridge": "~2.7",
+                "symfony/property-access": "~2.3",
+                "symfony/routing": "~2.3"
             },
             "suggest": {
                 "ext-curl": "*",
                 "propel/propel1": "~1.6",
-                "symfony/property-access": "~2.2",
-                "symfony/routing": "*"
+                "symfony/property-access": "~2.3",
+                "symfony/routing": "~2.3"
             },
             "type": "library",
             "extra": {
@@ -2058,7 +2060,7 @@
                 {
                     "name": "Thomas Rabaix",
                     "email": "thomas.rabaix@gmail.com",
-                    "homepage": "http://sonata-project.org/"
+                    "homepage": "https://sonata-project.org/"
                 }
             ],
             "description": "Lightweight Exporter library",
@@ -2070,7 +2072,7 @@
                 "export",
                 "xls"
             ],
-            "time": "2014-09-11 09:05:40"
+            "time": "2015-06-29 18:36:46"
         },
         {
             "name": "swiftmailer/swiftmailer",

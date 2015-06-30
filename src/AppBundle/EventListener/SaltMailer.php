@@ -1,20 +1,13 @@
 <?php
 namespace AppBundle\EventListener;
 
+use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Templating\EngineInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use AppBundle\Entity\Comment;
 
-class SaltMailer
+class SaltMailer extends ContainerAware
 {
-    protected $mailer;
-    protected $templating;
-
-    public function __construct(\Swift_Mailer $mailer, EngineInterface $templating)
-    {
-        $this->mailer = $mailer;
-        $this->templating = $templating;
-    }
     public function postPersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
@@ -24,7 +17,7 @@ class SaltMailer
             $message = \Swift_Message::newInstance()
             ->setSubject('Соль Сити: новый отзыв')
             ->setFrom(array('mail@salt-city.ru' => 'СольCity'))
-            ->setBody($this->templating->renderView(
+            ->setBody($this->container->get('templating')->render(
                     'email_moderator.html.twig',
                     array('id' => $entity->getId())
                 ),
@@ -33,7 +26,7 @@ class SaltMailer
             foreach($emails as $i) {
                 $message->setTo($i->getMailto());
             }
-            $this->mailer->send($message);
+            $this->container->get('mailer')->send($message);
         }
     }
 }

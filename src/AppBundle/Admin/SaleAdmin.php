@@ -13,9 +13,13 @@ class SaleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('salestext')
-            ->add('cat')
-            ->add('status')
+            ->add('salestext', 'text', array('label' => 'Текст события'))
+            ->add('cat', 'choice', array(
+                'choices' => array('0' => 'Новости', '1' => 'Акция'),
+                'label' => 'Тип события'))
+            ->add('status', 'choice', array(
+                'choices' => array('1' => 'Показывать на главной', '0' => 'Не показывать на главной'),
+                'label' => 'Статус'))
         ;
     }
 
@@ -23,10 +27,34 @@ class SaleAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('salestext')
-            ->add('cat')
-            ->add('status')
-            ->add('datecr')
+            ->add('salestext', null, array('label' => 'Текст события'))
+            ->add('cat',
+                    'doctrine_orm_choice',
+                    array(
+                        'label' => 'Тип события',
+                        'field_type' => 'checkbox'
+                        ),
+                    'choice' , array(
+                        'choices' => array(
+                            '0' => 'Новости',
+                            '1' => 'Акция'
+                            )
+                        )
+            )
+            ->add('status',
+                    'doctrine_orm_choice',
+                    array(
+                        'label' => 'Статус',
+                        'field_type' => 'checkbox'
+                        ),
+                    'choice' , array(
+                        'choices' => array(
+                            '0' => 'Не показывать на главной',
+                            '1' => 'Показывать на главной'
+                            )
+                        )
+            )
+            ->add('datecr', 'doctrine_orm_datetime_range', array('input_type' => 'timestamp', 'label' => 'Время создания'))
         ;
     }
 
@@ -35,7 +63,13 @@ class SaleAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('salestext')
-            ->add('cat')
+            ->add('cat', 'choice', array(
+                'choices' => array('0' => 'Новости', '1' => 'Акция'),
+                'label' => 'Тип события'))
+            ->add('status', 'choice', array(
+                'choices' => array('1' => 'Показывать на главной', '0' => 'Не показывать на главной'),
+                'label' => 'Статус'))
+            ->add('datecr', 'datetime', array('label' => 'Создан'))
         ;
     }
 }

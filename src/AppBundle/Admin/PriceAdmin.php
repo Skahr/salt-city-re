@@ -13,10 +13,10 @@ class PriceAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('pricename')
-            ->add('price')
-            ->add('seats')
-            ->add('priceinfo')
+            ->add('pricename', 'text', array('label' => 'Название тарифа'))
+            ->add('price', 'integer', array('label' => 'Стоимость за сеанс'))
+            ->add('seats', 'integer', array('label' => 'Кол-во мест', 'attr' => array('value' => 1, 'min' => 1)))
+            ->add('priceinfo', 'textarea', array('label' => 'Подробности', 'required' => false))
         ;
     }
 
@@ -24,10 +24,9 @@ class PriceAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('pricename')
-            ->add('price')
-            ->add('seats')
-            ->add('priceinfo')
+            ->add('pricename', null, array('label' => 'Название тарифа'))
+            ->add('price', null, array('label' => 'Стоимость за сеанс'))
+            ->add('seats', null, array('label' => 'Кол-во мест'))
         ;
     }
 
@@ -35,10 +34,10 @@ class PriceAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('pricename')
-            ->add('price')
-            ->add('seats')
-            ->add('priceinfo')
+            ->addIdentifier('pricename', 'text', array('label' => 'Название тарифа'))
+            ->add('price', 'integer', array('label' => 'Стоимость за сеанс'))
+            ->add('seats', 'integer', array('label' => 'Кол-во мест'))
+            ->add('priceinfo', 'textarea', array('label' => 'Подробности'))
         ;
     }
 }
