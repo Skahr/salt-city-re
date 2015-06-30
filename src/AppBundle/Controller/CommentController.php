@@ -58,12 +58,7 @@ class CommentController extends Controller
             $em->persist($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->set('info', 'Спасибо! Ваш отзыв будет опубликован после проверки модератором');
-            return $this->redirect($this->generateUrl('comments'));
         }
-        return $this->render('Comment/index.html.twig', array(
-            'entities' => $entities,
-            'form'   => $form->createView(),
-            'pagination' => $pagination
-        ));
+        return $this->redirect($this->generateUrl('comments'));
     }
 }

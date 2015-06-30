@@ -29,3 +29,13 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle]]
+    sonata.admin.email:
+        class: AppBundle\Admin\EmailAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Админ", label: "Модераторы комментов" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Email
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]

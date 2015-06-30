@@ -81,3 +81,7 @@ footer a {
 .panel h3 { font-size: 2vw; }
 form { margin-bottom: 15px; margin-top: 15px; }
 form input { margin-bottom: 15px; margin-top: 10px; }
+.comments_form {
+    border: solid #1d949a 1px; margin-bottom: 20px; margin-top: 20px; padding: 15px;
+    border-radius: 20px;
+}
