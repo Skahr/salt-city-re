@@ -62,14 +62,14 @@ class SaleAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('salestext')
+            ->addIdentifier('salestext', 'text', array('label' => 'Текст события'))
             ->add('cat', 'choice', array(
                 'choices' => array('0' => 'Новости', '1' => 'Акция'),
                 'label' => 'Тип события'))
             ->add('status', 'choice', array(
                 'choices' => array('1' => 'Показывать на главной', '0' => 'Не показывать на главной'),
                 'label' => 'Статус'))
-            ->add('datecr', 'datetime', array('label' => 'Создан'))
+            ->add('datecr', 'datetime', array('label' => 'Время создания'))
         ;
     }
 }

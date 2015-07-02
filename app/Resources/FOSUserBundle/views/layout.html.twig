@@ -9,6 +9,13 @@
             {% block fos_user_content %}{% endblock %}
         </div>
     </div>
+    <div class="container text-center">
+        {% if app.request.headers.get('referer') %}
+            <p>
+                <a href="{{ app.request.headers.get('referer') }}">назад</a>
+            </p>
+        {% endif %}
+    </div>
     <script>
         $( "input[type~='text'],input[type~='password']" ).addClass( "form-control" );
         //$( "input[type~='checkbox']" ).next().andSelf().wrapAll( "<div class='checkbox'></div>" );

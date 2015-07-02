@@ -14,7 +14,7 @@ class PriceAdmin extends Admin
     {
         $formMapper
             ->add('pricename', 'text', array('label' => 'Название тарифа'))
-            ->add('price', 'integer', array('label' => 'Стоимость за сеанс'))
+            ->add('price', 'integer', array('label' => 'Стоимость за сеанс', 'attr' => array('min' => 0)))
             ->add('seats', 'integer', array('label' => 'Кол-во мест', 'attr' => array('value' => 1, 'min' => 1)))
             ->add('priceinfo', 'textarea', array('label' => 'Подробности', 'required' => false))
         ;

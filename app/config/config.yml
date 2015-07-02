@@ -99,6 +99,8 @@ sonata_block:
         # Enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
+        sonata.admin.block.search_result:
+            contexts:   [admin]
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
@@ -106,7 +108,7 @@ fos_user:
 sonata_admin:
     templates:
         layout:                         admin/sonata_layout.html.twig
-    title:      Соль Master
+    title:      Соль Мастер
     title_logo: images/logo.png
     assets:
         stylesheets:
@@ -125,6 +127,11 @@ sonata_admin:
             - bundles/sonataadmin/css/layout.css
             - bundles/sonataadmin/css/tree.css
             - css/sonata.css
+liip_imagine:
+    filter_sets:
+        salt_thumb:
+            filters:
+                thumbnail: { size: [360, 240], mode: outbound }
 services:
     twig.extension.text:
         class: Twig_Extensions_Extension_Array

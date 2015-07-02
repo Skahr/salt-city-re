@@ -5,9 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Соляная пещера{% endblock %} | Соль City</title>
-        <meta name="description" content="Соль City - соляная пещера в Новосибирске. Ваше здоровье в Ваших руках!">  
+        <meta name="description" content="Соль Сити - соляная пещера в Новосибирске. Ваше здоровье в Ваших руках!">  
         <meta name="author" content="Trofimov Anton">
-        <meta name="keywords" content="соляная пещера Новосибирск соль city" />
+        <meta name="keywords" content="соляная пещера Новосибирск соль сити" />
         <meta name="google-site-verification" content="EGuwerU7XV0DP4Pfj2b3VWEIOfNljIEtoe0_kM5-ZVg" />
         <meta name='yandex-verification' content='4ec78f46c57beaef' />
         <meta name="robots" content="INDEX, NOFOLLOW">
@@ -26,9 +26,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     </head>
+    
     <body data-spy="scroll" data-target=".navbar">
         <section id="top"></section>
-
         <div class="navbar-wrapper">
                 <nav class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
@@ -39,15 +39,20 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="{{ path('homepage') }}">Соль City</a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul id="scrollspynav" class="nav navbar-nav">
+                                {% set salt = ['salt', 'salt_cert', 'salt_contr', 'salt_ind', 'salt_rules'] %}
                                 <li>
-                                    <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') }}#top">Главная</a>
+                                    <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') : '#top'}}">Соль Сити</a>
+                                </li>
+                                <li class="{{ app.request.attributes.get('_route') in salt ? 'active' }}">
+                                    <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') }}#salt">
+                                        О соляной пещере
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') }}#salt">О соляной пещере</a>
+                                    <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') }}#photo">Галерея</a>
                                 </li>
                                 <li>
                                     <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') }}#prices">Цены</a>
@@ -90,9 +95,7 @@
                     <p>{{ flashMessage }}</p>
                 </div>
             </div>
-     <!--       <div class="alert alert-success" role="alert">
-                <div class="container">{{ flashMessage }}</div>
-            </div>-->
+
         {% endfor %}
         {% for flashMessage in app.session.flashbag.get('error') %}
             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -102,9 +105,7 @@
                 </button>
                 <p>{{ flashMessage }}</p>
             </div>
-            <!--<div class="alert alert-danger" role="alert">
-                <div class="container">{{ flashMessage }}</div>
-            </div>-->
+
         {% endfor %}
 
         {% block sales %}

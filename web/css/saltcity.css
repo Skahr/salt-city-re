@@ -4,10 +4,14 @@ h3,
 h4,
 h5,
 h6 {
-  color: #1d949a; font-family: 'Open Sans Condensed', sans-serif;
+  color: #1d949a; font-family: 'Open Sans Condensed', sans-serif; padding-bottom: 10px;
 }
+body.modal-open { overflow:inherit; padding-right:inherit !important; }
 section {
-    padding-top: 50px
+    padding-top: 50px;
+}
+#photo {
+  padding-top: 0px;
 }
 #fos_section {
     padding-top: 7%; padding-bottom: 5%;
@@ -19,7 +23,7 @@ section {
     font-family: 'Jura', sans-serif; color: #1d949a;;
 }
 a.navbar-brand {
-    font-size: 20px;
+    font-size: 20px; border-right: solid #1d949a 1px; border-left: solid #1d949a 1px;
 }
 .carousel-control.left, .carousel-control.right {
     background-image: none
@@ -62,7 +66,20 @@ footer a {
     background: #1d949a;
 }
 .about-bg {
+    padding-top: 40px; padding-bottom: 15px;
     background: #3aa7ac;
+}
+.about-bg h1 {
+  color: white;
+}
+.about-nav {
+  background: #EDF4F4; padding-bottom: 20px; padding-top: 40px; margin-top: 20px;
+}
+.about-nav div a {
+  font-size: 6vw;
+}
+.about-nav div h4 {
+  font-size: 1.2vw;
 }
 .phone-bg {
     text-align: justify; background: #048389; padding: 10px; padding-bottom: 20px;
