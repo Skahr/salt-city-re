@@ -123,9 +123,9 @@ $(document).ready(function(){
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a id="day" aria-controls="day" role="tab" data-toggle="tab">Днем, с 9 до 17</a></li>
-                        <li><a id="evening" aria-controls="evening" role="tab" data-toggle="tab">Вечером, с 17 до 21</a></li>
-                        <li><a id="indiv" aria-controls="indiv" role="tab" data-toggle="tab">Индивидуальный график</a></li>
+                        <li><a id="day" aria-controls="day" role="tab" data-toggle="tab"><span class="label label-info">-{{ entities[0].day }}%</span> Днем, с 9 до 17</a></li>
+                        <li><a id="evening" aria-controls="evening" role="tab" data-toggle="tab"><span class="label label-info">- {{ entities[0].evening }}%</span> Вечером, с 17 до 21</a></li>
+                        <li><a id="indiv" aria-controls="indiv" role="tab" data-toggle="tab"><span class="label label-info">-{{ entities[0].special }}%</span> Индивидуальный график</a></li>
                     </ul>
                 </li>
                 <li id="drop_menu_hh" class="fifty-width dropdown">
@@ -161,12 +161,12 @@ $(document).ready(function(){
             <small>
                 <h4>*Режим галогигиены:</h4>
                 <p>
-                    - После прохождения основного курса (10 сеансов) можно посещать соляную пещеру "Соль City" 1-2 раза в неделю в профилактических целях (режим галогигиены) со скидкой 55%
+                    - После прохождения основного курса (10 сеансов) можно посещать соляную пещеру "Соль City" 1-2 раза в неделю в профилактических целях (режим галогигиены) со скидкой {{ entities[0].hygiene }}%
                 </p>
             </small>
             <small>
                 <h4>**Правила пользования вип-картой:</h4>
-                <p>- Вип-карта предоставляет право скидки 10%</p>
+                <p>- Вип-карта предоставляет право скидки {{ entities[0].vip }}%</p>
                 <p>- Вип-карта выдается после 3-х периодов посещений соляной пещеры (1 период - это 10-дневный курс или 1 месяц галогигиены)</p>
                 <p>- Скидка по Вип-карте предоставляется только держателю карты</p>
 

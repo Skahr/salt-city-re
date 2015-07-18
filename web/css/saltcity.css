@@ -88,7 +88,7 @@ footer a {
 .modal {
     top: 5%;
 }
-.label {
+.label-default {
     background: #1d949a;
 }
 .about-bg {
@@ -98,11 +98,12 @@ footer a {
 }
 .about-bg h1 {
     color: white;
+    padding-bottom: 20px;
 }
 .about-nav {
     background: #EDF4F4;
-    padding-bottom: 20px;
-    padding-top: 40px;
+    padding-bottom: 0px;
+    padding-top: 20px;
     margin-top: 20px;
 }
 .about-nav div a {
