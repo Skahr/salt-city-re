@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Соляная пещера{% endblock %} | Соль Сити</title>
-        <meta name="description" content="Соль Сити - соляная пещера в Новосибирске. Ваше здоровье в Ваших руках!">  
+        <title>{% block title %}Соляная пещера в Новосибирске{% endblock %} | Соль City</title>
+        <meta name="description" content="Соль City - соляная пещера в Новосибирске. Ваше здоровье в Ваших руках!">
         <meta name="author" content="Trofimov Anton">
-        <meta name="keywords" content="соляная пещера Новосибирск соль сити" />
+        <meta name="keywords" content="соляная пещера Новосибирск соль city" />
         <meta name="geo.region" content="RU" />
         <meta name="geo.placename" content="Новосибирск" />
         <meta name="google-site-verification" content="EGuwerU7XV0DP4Pfj2b3VWEIOfNljIEtoe0_kM5-ZVg" />
@@ -27,8 +27,9 @@
         <![endif]-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        {% block scripts %}{% endblock %}
     </head>
-    
+
     <body data-spy="scroll" data-target=".navbar">
         <section id="top"></section>
         <div class="navbar-wrapper">
@@ -46,7 +47,7 @@
                             <ul id="scrollspynav" class="nav navbar-nav">
                                 {% set salt = ['salt', 'salt_cert', 'salt_contr', 'salt_ind', 'salt_rules'] %}
                                 <li>
-                                    <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') : '#top'}}">Соль Сити</a>
+                                    <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') : '#top'}}">Соль City</a>
                                 </li>
                                 <li class="{{ app.request.attributes.get('_route') in salt ? 'active' }}">
                                     <a href="{{ app.request.attributes.get('_route') != 'homepage' ? path('homepage') }}#salt">
@@ -127,6 +128,6 @@
             </footer>
         {% endblock %}
 
-        
+
     </body>
 </html>

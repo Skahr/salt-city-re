@@ -13,6 +13,8 @@ use Skahr\AppBundle\Entity\Sale;
  */
 class SaleController extends Controller
 {
+    const KNP_PER_PAGE = 10;
+    
     /**
      * Lists all Sale entities.
      * @Route("sales", name="sales")
@@ -25,8 +27,8 @@ class SaleController extends Controller
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
         $entities,
-        $request->query->get('page', 1)/*page number*/,
-        10/*limit per page*/
+        $request->query->get('page', 1),
+        self::KNP_PER_PAGE
         );
         $pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig');
 
@@ -41,14 +43,9 @@ class SaleController extends Controller
     public function topSalesAction($max)
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery(
-                'SELECT p.salestext, p.cat
-                FROM AppBundle:Sale p
-                WHERE p.status = 1
-                ORDER BY p.datecr DESC'
-            )->setMaxResults($max);
-        $entities = $query->getResult();
-        
+        $entities = $em->getRepository('AppBundle:Sale')
+            ->findTopSales($max);
+
         return $this->render('default/sales.html.twig', array(
             'entities' => $entities,
         ));

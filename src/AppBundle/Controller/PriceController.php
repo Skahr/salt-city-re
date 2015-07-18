@@ -1,29 +1,27 @@
 <?php
+
 namespace AppBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Price;
 
 /**
  * Price controller.
- *
  */
 class PriceController extends Controller
 {
     /**
      * Lists all Price entities.
-     *
      */
-    public function mainPricesAction($max)
+    public function mainPricesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery(
-                'SELECT p.pricename, p.price, p.priceinfo, p.seats
-                FROM AppBundle:Price p'
-            )->setMaxResults($max);
-        $entities = $query->getResult();
-        
+        $entities = $em->getRepository('AppBundle:Price')
+            ->findLastPrice();
+
         return $this->render('default/pricesblock.html.twig', array(
             'entities' => $entities,
         ));

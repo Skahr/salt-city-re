@@ -18,7 +18,7 @@ class CommentAdmin extends Admin
             ->add('adminreply', 'textarea', array('label' => 'Ответ пользователю', 'required' => false))
             ->add('status', 'choice', array(
                         'choices' => array('0' => 'Скрывать отзыв', '1' => 'Показывать отзыв'),
-                        'label' => 'Статус'))
+                        'label' => 'Статус', ))
         ;
     }
 
@@ -31,37 +31,37 @@ class CommentAdmin extends Admin
                     'doctrine_orm_choice',
                     array(
                         'label' => 'Статус',
-                        'field_type' => 'checkbox'
+                        'field_type' => 'checkbox',
                         ),
-                    'choice' , array(
+                    'choice', array(
                         'choices' => array(
                             '0' => 'Скрывать отзыв',
-                            '1' => 'Показывать отзыв'
-                            )
+                            '1' => 'Показывать отзыв',
+                            ),
                         )
             )
             ->add('adminreply', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
+                'callback' => function ($queryBuilder, $alias, $field, $value) {
                     if (!$value['value']) {
                         return;
                     }
-                    
-                    if($value['value']==='NULL') {
+
+                    if ($value['value'] === 'NULL') {
                         $queryBuilder->andWhere('o.adminreply IS NULL');
-                    } elseif($value['value']==='NOT NULL') {
+                    } else {
                         $queryBuilder->andWhere('o.adminreply IS NOT NULL');
                     }
-                    
+
                     return true;
                 },
                         'field_type' => 'checkbox',
-                        'label'=> 'Ответ'
+                        'label' => 'Ответ',
                         ),
-                  'choice' , array(
+                  'choice', array(
                         'choices' => array(
                             'NULL' => 'Без ответа',
-                            'NOT NULL' => 'Отвечен'
-                            )
+                            'NOT NULL' => 'Отвечен',
+                            ),
                         ))
             ->add('datecr', 'doctrine_orm_datetime_range', array('input_type' => 'timestamp', 'label' => 'Время создания'))
         ;
@@ -74,9 +74,9 @@ class CommentAdmin extends Admin
             ->addIdentifier('username', 'text', array('label' => 'Пользователь'))
             ->add('status', 'choice', array(
                         'choices' => array('' => 'Скрывать отзыв', '0' => 'Скрывать отзыв', '1' => 'Показывать отзыв'),
-                        'label' => 'Статус'))
+                        'label' => 'Статус', ))
             ->add('adminreply', 'boolean', array(
-                        'label' => 'Ответ'
+                        'label' => 'Ответ',
                         )
                  )
             ->add('datecr', 'datetime', array('label' => 'Время создания'))

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Price
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\PriceRepository")
  */
 class Price
 {
@@ -22,13 +22,6 @@ class Price
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="pricename", type="string", length=255, unique=true)
-     */
-    private $pricename;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="price", type="integer")
@@ -36,18 +29,39 @@ class Price
     private $price;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="priceinfo", type="text", nullable=true)
+     * @ORM\Column(name="vip", type="integer")
      */
-    private $priceinfo;
+    private $vip;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="seats", type="integer")
+     * @ORM\Column(name="hygiene", type="integer")
      */
-    private $seats;
+    private $hygiene;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="day", type="integer")
+     */
+    private $day;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="evening", type="integer")
+     */
+    private $evening;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="special", type="integer")
+     */
+    private $special;
 
 
     /**
@@ -58,29 +72,6 @@ class Price
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set pricename
-     *
-     * @param string $pricename
-     * @return Price
-     */
-    public function setPricename($pricename)
-    {
-        $this->pricename = $pricename;
-
-        return $this;
-    }
-
-    /**
-     * Get pricename
-     *
-     * @return string 
-     */
-    public function getPricename()
-    {
-        return $this->pricename;
     }
 
     /**
@@ -107,48 +98,117 @@ class Price
     }
 
     /**
-     * Set priceinfo
+     * Set vip
      *
-     * @param string $priceinfo
+     * @param integer $vip
      * @return Price
      */
-    public function setPriceinfo($priceinfo)
+    public function setVip($vip)
     {
-        $this->priceinfo = $priceinfo;
+        $this->vip = $vip;
 
         return $this;
     }
 
     /**
-     * Get priceinfo
-     *
-     * @return string 
-     */
-    public function getPriceinfo()
-    {
-        return $this->priceinfo;
-    }
-
-    /**
-     * Set seats
-     *
-     * @param integer $seats
-     * @return Price
-     */
-    public function setSeats($seats)
-    {
-        $this->seats = $seats;
-
-        return $this;
-    }
-
-    /**
-     * Get seats
+     * Get vip
      *
      * @return integer 
      */
-    public function getSeats()
+    public function getVip()
     {
-        return $this->seats;
+        return $this->vip;
+    }
+
+    /**
+     * Set hygiene
+     *
+     * @param integer $hygiene
+     * @return Price
+     */
+    public function setHygiene($hygiene)
+    {
+        $this->hygiene = $hygiene;
+
+        return $this;
+    }
+
+    /**
+     * Get hygiene
+     *
+     * @return integer 
+     */
+    public function getHygiene()
+    {
+        return $this->hygiene;
+    }
+
+    /**
+     * Set day
+     *
+     * @param integer $day
+     * @return Price
+     */
+    public function setDay($day)
+    {
+        $this->day = $day;
+
+        return $this;
+    }
+
+    /**
+     * Get day
+     *
+     * @return integer 
+     */
+    public function getDay()
+    {
+        return $this->day;
+    }
+
+    /**
+     * Set evening
+     *
+     * @param integer $evening
+     * @return Price
+     */
+    public function setEvening($evening)
+    {
+        $this->evening = $evening;
+
+        return $this;
+    }
+
+    /**
+     * Get evening
+     *
+     * @return integer 
+     */
+    public function getEvening()
+    {
+        return $this->evening;
+    }
+
+    /**
+     * Set special
+     *
+     * @param integer $special
+     * @return Price
+     */
+    public function setSpecial($special)
+    {
+        $this->special = $special;
+
+        return $this;
+    }
+
+    /**
+     * Get special
+     *
+     * @return integer 
+     */
+    public function getSpecial()
+    {
+        return $this->special;
     }
 }

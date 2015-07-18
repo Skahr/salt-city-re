@@ -1,25 +1,177 @@
-{% for entity in entities %}
-	<div class="col-lg-4 col-md-6 col-xs-12 text-center">
-	   <div class="panel panel-info">
-            <div class="panel-heading">
-                {% if entity.priceinfo %}
-                <a data-toggle="collapse" href="#collapseP{{ loop.index }}" aria-expanded="false" style="display: block; height: 100%">
-                    <h1>{{ entity.pricename }} <small style="color: #1d959a"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></small></h1>
-                </a>
-                {% else %}
-                    <h1>{{ entity.pricename }}</h1>
-                {% endif %}
+{% if entities is empty %}
+<div class="alert-danger">
+    <p>
+        Калькулятор цен временно не работает
+    </p>
+    <p>
+        Стоимость посещения соляной пещеры "Соль City" можно узнать <a class="alert-link" href="https://vk.com/pages?oid=-93666360&p=%D0%A1%D0%A2%D0%9E%D0%98%D0%9C%D0%9E%D0%A1%D0%A2%D0%AC_">ВКонтакте</a> или по телефону (383) 380-90-04
+    </p>
+</div>
+{% else %}
+
+<script>
+var base_price = {{ entities[0].price }};
+var vip = {{ entities[0].vip / 100 }};
+var day_price = {{ entities[0].day / 100 }};
+var ev_price = {{ entities[0].evening / 100 }};
+var spec_price = {{ entities[0].special / 100 }};
+var hygiene = {{ entities[0].hygiene / 100 }};
+var price = base_price;
+var discount = 0;
+var base_discount = 0;
+
+$(document).ready(function(){
+
+    function calcAndShow()
+    {
+        $("#price").text(Math.round(price * (1 - discount - base_discount)));
+    }
+
+    $("#drop_menu_hh").hide();
+    calcAndShow();
+
+    $("#hh").change(function(){
+        if($(this).is(":checked")) {
+            discount += hygiene;
+            $("#drop_menu").hide();
+            $("#drop_menu_hh").show();
+        }
+        else {
+            discount -= hygiene;
+            $("#drop_menu").show();
+            $("#drop_menu_hh").hide();
+        }
+        $("#single").trigger("click");
+    });
+
+    $("#vip").change(function(){
+        if($(this).is(":checked")) {
+            discount += vip;
+        }
+        else {
+            discount -= vip;
+        }
+        calcAndShow();
+    });
+
+    $("#single").click(function(){
+        $("#price_time").text("");
+        base_discount = 0;
+        price = base_price;
+        calcAndShow();
+    });
+
+    $("#day").click(function(){
+        $("#price_time").text("днем, с 9 до 17");
+        base_discount = day_price;
+        price = base_price * 10;
+        calcAndShow();
+    });
+
+    $("#evening").click(function(){
+        $("#price_time").text("вечером, с 17 до 21");
+        base_discount = ev_price;
+        price = base_price * 10;
+        calcAndShow();
+    });
+
+    $("#indiv").click(function(){
+        $("#price_time").text("по индивидуальному графику, день/вечер");
+        base_discount = spec_price;
+        price = base_price * 10;
+        calcAndShow();
+    });
+
+    $("#hhonce").click(function(){
+        $("#price_time").text("1 сеанс в неделю");
+        base_discount = 0;
+        price = base_price * 4;
+        calcAndShow();
+    });
+
+    $("#hhtwice").click(function(){
+        $("#price_time").text("2 сеанса в неделю");
+        base_discount = 0;
+        price = base_price * 8;
+        calcAndShow();
+    });
+
+});
+</script>
+
+
+<div class="checkbox price-checkbox">
+    <label>
+        <input type="checkbox" id="hh"/>режим галогигиены*
+    </label>
+    <label>
+        <input type="checkbox" id="vip"/>есть ВИП-карта**
+    </label>
+<div>
+<div class="row">
+    <div class="col-sm-12 col-md-6 text-center">
+        <div role="tabpanel">
+            <ul class="nav nav-tabs">
+                <li class="fifty-width active">
+                    <a id="single" aria-controls="single" role="tab" data-toggle="tab">Разовый сеанс</a>
+                </li>
+                <li id="drop_menu" class="fifty-width dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span id="drop_menu">
+                            Абонемент на 10 сеансов
+                        </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a id="day" aria-controls="day" role="tab" data-toggle="tab">Днем, с 9 до 17</a></li>
+                        <li><a id="evening" aria-controls="evening" role="tab" data-toggle="tab">Вечером, с 17 до 21</a></li>
+                        <li><a id="indiv" aria-controls="indiv" role="tab" data-toggle="tab">Индивидуальный график</a></li>
+                    </ul>
+                </li>
+                <li id="drop_menu_hh" class="fifty-width dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span id="drop_menu">
+                            Абонемент на 1 месяц
+                        </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a id="hhonce" aria-controls="hhonce" role="tab" data-toggle="tab">1 сеанс в неделю</a></li>
+                        <li><a id="hhtwice" aria-controls="hhtwice" role="tab" data-toggle="tab">2 сеанса в неделю</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="tab_time">
+                <p><br/>для 1 взрослого или 1 ребенка до 8 лет в сопровождении 1 взрослого</p>
+                <p id="price_time"></p>
             </div>
-            <div class="panel-body">
-                {% if entity.priceinfo %}
-                    <div class="collapse" id="collapseP{{ loop.index }}" style="position: absolute; left: 10%; bottom: 10%; z-index: 10; width: 80%; padding: 5%; background: #f8f8f8">
-                        {{ entity.priceinfo }}
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                    <div class="price_tag">
+                        <span id="price"></span><small><span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></small>
                     </div>
-                {% endif %}
-                <h1>{{ entity.price }} <small style="color: #1d959a"><span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></small></h1>
-                <h2 style="color: #98d8e0"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  {{ entity.seats }}</h2>
-                <h3 style="color: #98d8e0"><span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>   30</h3>
+                </div>
             </div>
         </div>
     </div>
-{% endfor %}
+    <div class="col-sm-12 col-md-6">
+        <div class="well text-justify">
+            <p>Ребенок до 1 года - БЕСПЛАТНО!</p>
+            <p>Доплата за 2-го и каждого последующего ребенка до 8 лет - 80 руб./сеанс</p>
+            <small>
+                <h4>*Режим галогигиены:</h4>
+                <p>
+                    - После прохождения основного курса (10 сеансов) можно посещать соляную пещеру "Соль City" 1-2 раза в неделю в профилактических целях (режим галогигиены) со скидкой 55%
+                </p>
+            </small>
+            <small>
+                <h4>**Правила пользования вип-картой:</h4>
+                <p>- Вип-карта предоставляет право скидки 10%</p>
+                <p>- Вип-карта выдается после 3-х периодов посещений соляной пещеры (1 период - это 10-дневный курс или 1 месяц галогигиены)</p>
+                <p>- Скидка по Вип-карте предоставляется только держателю карты</p>
+
+            </small>
+        </div>
+    </div>
+</div>
+{% endif %}

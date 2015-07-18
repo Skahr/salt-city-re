@@ -13,10 +13,13 @@ class PriceAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('pricename', 'text', array('label' => 'Название тарифа'))
             ->add('price', 'integer', array('label' => 'Стоимость за сеанс', 'attr' => array('min' => 0)))
-            ->add('seats', 'integer', array('label' => 'Кол-во мест', 'attr' => array('value' => 1, 'min' => 1)))
-            ->add('priceinfo', 'textarea', array('label' => 'Подробности', 'required' => false))
+            ->add('vip', 'integer', array('label' => 'Скидка по ВИП', 'attr' => array('min' => 0, 'max' => 100)))
+            ->add('hygiene', 'integer', array('label' => 'Скидка на гигиену', 'attr' => array('min' => 0, 'max' => 100)))
+            ->add('day', 'integer', array('label' => 'Скидка на день', 'attr' => array('min' => 0, 'max' => 100)))
+            ->add('evening', 'integer', array('label' => 'Скидка на вечер', 'attr' => array('min' => 0, 'max' => 100)))
+            ->add('special', 'integer', array('label' => 'Скидка по инд. режиму', 'attr' => array('min' => 0, 'max' => 100)))
+
         ;
     }
 
@@ -24,9 +27,7 @@ class PriceAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('pricename', null, array('label' => 'Название тарифа'))
             ->add('price', null, array('label' => 'Стоимость за сеанс'))
-            ->add('seats', null, array('label' => 'Кол-во мест'))
         ;
     }
 
@@ -34,10 +35,13 @@ class PriceAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('pricename', 'text', array('label' => 'Название тарифа'))
+            ->addIdentifier('id', 'integer', array('label' => 'ИД'))
             ->add('price', 'integer', array('label' => 'Стоимость за сеанс'))
-            ->add('seats', 'integer', array('label' => 'Кол-во мест'))
-            ->add('priceinfo', 'textarea', array('label' => 'Подробности'))
+            ->add('vip', 'integer', array('label' => 'Скидка по ВИП'))
+            ->add('hygiene', 'integer', array('label' => 'Скидка на гигиену'))
+            ->add('day', 'integer', array('label' => 'Скидка на день'))
+            ->add('evening', 'integer', array('label' => 'Скидка на вечер'))
+            ->add('special', 'integer', array('label' => 'Скидка по инд. режиму'))
         ;
     }
 }

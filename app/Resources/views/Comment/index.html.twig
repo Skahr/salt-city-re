@@ -1,6 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}Отзывы{% endblock%}
+{#{% block scripts %}
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
+    <script type="text/javascript">
+      VK.init({apiId: 4984818, onlyWidgets: false});
+    </script>
+{% endblock %}#}
 {% block body %}
 <section id="comments">
     <div class="container">
@@ -8,6 +14,18 @@
         {% if app.request.headers.get('referer') %}
             <p><a href="{{ app.request.headers.get('referer') }}">назад</a></p><br/>
         {% endif %}
+        {#
+        <!--vk-->
+        <div id="vk_comments"></div>
+        <script type="text/javascript">
+            VK.Widgets.Comments("vk_comments", {limit: 10, attach: false});
+            VK.Observer.subscribe("widgets.comments.new_comment", function f(n, last_comment)
+            {
+                alert (last_comment);
+            });
+        </script>
+        <!--vk-->
+        #}
         <div class="comments_form">
         {{ form(form) }}
         </div>
@@ -24,7 +42,7 @@
                 </div>
                 {% if comment.adminreply %}
                     <div class="panel-footer">
-                        <h4>Соль Сити:</h4>
+                        <h4>Соль City:</h4>
                         <p>{{ comment.adminreply }}</p>
                     </div>
                 {% endif %}

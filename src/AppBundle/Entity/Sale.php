@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Sale
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\SaleRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Sale
@@ -54,7 +54,7 @@ class Sale
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -77,7 +77,7 @@ class Sale
     /**
      * Get salestext
      *
-     * @return string 
+     * @return string
      */
     public function getSalestext()
     {
@@ -100,7 +100,7 @@ class Sale
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -123,7 +123,7 @@ class Sale
     /**
      * Get cat
      *
-     * @return integer 
+     * @return integer
      */
     public function getCat()
     {
@@ -146,13 +146,13 @@ class Sale
     /**
      * Get datecr
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDatecr()
     {
         return $this->datecr;
     }
-    
+
     /**
     * @ORM\PrePersist
     */
