@@ -99,15 +99,19 @@ $(document).ready(function(){
 });
 </script>
 
+<form class="form form-horizontal">
+    <div class="checkbox checkbox-default price-checkbox">
+            <input type="checkbox" id="hh"/>
+            <label for="hh">
+                <span class="label label-default">-{{ entities[0].hygiene }}%</span> Режим галогигиены*
+            </label>
+            <input type="checkbox" id="vip"/>
+            <label for="vip">
+                <span class="label label-info">-{{ entities[0].vip }}%</span> Есть ВИП-карта**
+            </label>
+    </div>
+</form>
 
-<div class="checkbox price-checkbox">
-    <label>
-        <input type="checkbox" id="hh"/>режим галогигиены*
-    </label>
-    <label>
-        <input type="checkbox" id="vip"/>есть ВИП-карта**
-    </label>
-<div>
 <div class="row">
     <div class="col-sm-12 col-md-6 text-center">
         <div role="tabpanel">
