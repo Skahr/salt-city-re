@@ -14,7 +14,7 @@ class DefaultController extends Controller
     {
         return $this->render('default/index.html.twig');
     }
-    
+
     /**
      * @Route("salt/photo/{id}", name="photo", defaults={"id" = 1})
      */
@@ -22,15 +22,15 @@ class DefaultController extends Controller
     {
         return $this->render('default/salt_photo.html.twig', array('id' => $id));
     }
-    
+
     /**
-     * @Route("/salt", name="salt")
+     * @Route("/salt/", name="salt")
      */
     public function saltAction()
     {
         return $this->render('default/salt.html.twig');
     }
-    
+
     /**
      * @Route("/salt/certificates", name="salt_cert")
      */
@@ -38,7 +38,7 @@ class DefaultController extends Controller
     {
         return $this->render('default/salt_cert.html.twig');
     }
-    
+
     /**
      * @Route("/salt/contraindications", name="salt_contr")
      */
@@ -46,7 +46,7 @@ class DefaultController extends Controller
     {
         return $this->render('default/salt_contr.html.twig');
     }
-    
+
     /**
      * @Route("/salt/indications", name="salt_ind")
      */
@@ -54,7 +54,7 @@ class DefaultController extends Controller
     {
         return $this->render('default/salt_indications.html.twig');
     }
-    
+
     /**
      * @Route("/salt/rules", name="salt_rules")
      */
